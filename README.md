@@ -4,7 +4,7 @@ This is a sample application showing how to configure and enable OpenID Connect 
 
 ## Running the sample
 
-Create a `.env` file in the root and add your environment variables from your FR IDC tenant
+Create a `.env` file in the root and add your environment configuration from your FR IDC tenant. You'll need to create a Web/Confidential client
 
     CLIENT_ID=
     CLIENT_SECRET=
