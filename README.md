@@ -12,7 +12,7 @@ This is a sample application showing how to configure and enable OpenID Connect 
 
 ## Running the sample
 
-Create a `.env` file in the root and add your environment configuration from your FR IDC tenant. You'll need to create a Web/Confidential client
+copy the `.env.sample` file, rename it to `.env` and add your environment configuration from your ForgeRock IDC tenant.
 
     CLIENT_ID=
     CLIENT_SECRET=
