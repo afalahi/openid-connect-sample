@@ -7,7 +7,7 @@ This is a sample application showing how to configure and enable OpenID Connect 
 - Create a web/confidential client
 - Ensure you have the Authorization Code grant selected in grant types
 - In Show advanced settings > Authentication ensure you have client_secret_post in your Token Endpoint Authentication Method
-- in your sign in URLs add http://localhost:3000/auth/callback
+- in your sign in URLs add <http://localhost:3000/auth/callback>
 - Update your scopes as needed, but make sure openid is there
 
 ## Running the sample
