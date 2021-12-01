@@ -38,11 +38,14 @@ Issuer.discover(
   app.use(
     session({
       secret: 'keyboard cat',
-      resave: false,
-      saveUninitialized: true,
-      name:'fr.nodejs.client',
+      resave: true,
+      saveUninitialized: false,
+      name:'sid.telushealth',
       cookie: {
+        path:'/',
         maxAge: 100 * 10 * 60 * 60 * 1,
+        httpOnly:true,
+        secure:'auto'
       },
     })
   );
