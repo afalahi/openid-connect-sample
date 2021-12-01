@@ -94,6 +94,7 @@ app.use('/', indexRouter);
   // logout callback
   app.get('/logout/callback', (req, res) => {
     // clears the persisted user from the local storage
+    req.app.locals.decodedUser = null;
     req.logout();
     // redirects the user to a public route
     res.redirect('/');
