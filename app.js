@@ -10,6 +10,7 @@ const { Issuer, Strategy } = require('openid-client');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const locals = require('./middleware/locals');
 
 const app = express();
 
@@ -22,8 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
 
 Issuer.discover(
   process.env.IDC_TENANT //your IDC cloud am Oauth2 endpoint
@@ -41,6 +40,10 @@ Issuer.discover(
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: true,
+      name:'fr.nodejs.client',
+      cookie: {
+        maxAge: 100 * 10 * 60 * 60 * 1,
+      },
     })
   );
 
@@ -53,7 +56,9 @@ Issuer.discover(
       return done(null, tokenSet);
     })
   );
-
+app.use(locals);
+app.locals.decodedUser = null;
+app.use('/', indexRouter);
   //handles serialization and deserialization of authenticated user
   passport.serializeUser(function (user, done) {
     done(null, user);
