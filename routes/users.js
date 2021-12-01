@@ -10,7 +10,8 @@ router.get('/', ensureLoggedIn('/'), (req, res) => {
     id_token: jwtDecode(req.user.id_token)
   };
   console.log(decodedUser);
-  res.render('users', { user: req.user, decodedUser });
+  req.app.locals.decodedUser = decodedUser
+  res.render('users', { user: req.user, decodedUser, title:'users' });
 });
 
 module.exports = router;
