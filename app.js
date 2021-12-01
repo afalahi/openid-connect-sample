@@ -88,7 +88,7 @@ app.use('/', indexRouter);
 
   // start logout request
   app.get('/logout', (req, res) => {
-    res.redirect(client.endSessionUrl());
+    res.redirect(client.endSessionUrl({id_token_hint:req.user.id_token}));
   });
 
   // logout callback
