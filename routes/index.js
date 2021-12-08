@@ -3,7 +3,10 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  if (!req.user) {
+    req.app.locals.decodedUser = null;
+  }
+  res.render('index', { title: 'Telus Health' });
 });
 
 module.exports = router;
