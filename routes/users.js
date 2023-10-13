@@ -4,6 +4,7 @@ const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 const jwtDecode = require('jwt-decode');
 
 router.get('/', ensureLoggedIn('/'), (req, res) => {
+  console.log(req.user.access_token)
   const decodedUser = {
     access_token: {...jwtDecode(req.user.access_token)},
     refresh_token: jwtDecode(req.user.refresh_token),
